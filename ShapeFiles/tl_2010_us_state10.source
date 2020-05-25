@@ -1,0 +1,26 @@
+wget http://www2.census.gov/geo/tiger/TIGER2010/STATE/2010/tl_2010_us_state10.zip
+
+
+**
+Here's how to do that using open source tools:
+Download the state borders file from TIGER 2010
+
+    http://www2.census.gov/geo/tiger/TIGER2010/STATE/2010/tl_2010_us_state10.zip
+
+Unzip and extract the lower 48 states + DC using ogr2ogr:
+
+    ogr2ogr -f "ESRI Shapefile" -sql "SELECT * FROM tl_2010_us_state10 WHERE STATEFP10 < 60 AND STATEFP10 NOT IN ('02','15')" lower48 tl_2010_us_state10.shp
+
+(FIPS codes can be found on the web easily)
+
+Get the extent for the resulting shapefile using ogrinfo:
+
+    ogrinfo -so lower48/tl_2010_us_state10.shp tl_2010_us_state10
+
+The output contains the extent:
+
+    Extent: (-124.848974, 24.396308) - (-66.885444, 49.384358)
+------------
+** source: https://www.quora.com/What-is-the-longitude-and-latitude-of-a-bounding-box-around-the-continental-United-States
+Martijn van Exel, geospatial omnivore
+Answered May 9, 2012
