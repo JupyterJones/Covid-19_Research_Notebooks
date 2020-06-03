@@ -1,1 +1,16 @@
-naturalearthdata_com/
+BaseMap\
+CheckZorder_files\
+China\
+csv\
+data\
+html\
+images\
+json\
+Maryland\
+__pycache__\
+resources\
+results\
+tmp\
+USA\
+World\
+COVID-19
